@@ -1,0 +1,28 @@
+{
+  "name": "@qmacro/receiver",
+  "version": "1.0.0",
+  "description": "Receiver",
+  "private": true,
+  "dependencies": {
+    "@qmacro/emitter": "*",
+    "@sap-cloud-sdk/http-client": "^4.1.2",
+    "@sap/cds": "^9",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "EmitterService": {
+        "service": "org.qmacro.emitter.EmitterService",
+        "model": "@qmacro/emitter",
+        "kind": "odata"
+      },
+      "messaging": true
+    }
+  }
+}

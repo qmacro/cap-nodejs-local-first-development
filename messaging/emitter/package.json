@@ -1,0 +1,21 @@
+{
+  "name": "@qmacro/emitter",
+  "version": "1.0.0",
+  "description": "Emitter",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^9",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "messaging": true
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@qmacro/messaging",
+  "private": true,
+  "workspaces": [
+    "*"
+  ]
+}
