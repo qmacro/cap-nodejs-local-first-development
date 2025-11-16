@@ -8,24 +8,36 @@ monmsgbox() {
   watch cat "$HOME/.cds-msg-box"
 }
 
+clearservices() {
+  echo > "$HOME/.cds-services.json"
+}
+
 monservices() {
   watch -c jq -C . "$HOME/.cds-services.json"
 }
 
 sendaction() {
 
-  declare data
-  data="$(date +%s)"
+  local port="${1:-4001}"
+  data="$(date +%s)" # random data
 
   curl \
     --silent \
     --request POST \
-    --url 'localhost:4001/rest/emitter/greet' \
+    --url "localhost:$port/rest/emitter/greet" \
     --data '{"greeting":"'"${data}"'"}'
 }
 
-if [[ -z $1 ]]; then
-  declare -F | sed 's/^declare -f //'
-else
-  "$1"
-fi
+main() {
+
+  local util=$1
+  shift
+  if [[ -z $util ]]; then
+    declare -F | sed 's/^declare -f //'
+  else
+    "$util" "$@"
+  fi
+
+}
+
+main "$@"
