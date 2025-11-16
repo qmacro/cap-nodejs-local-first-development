@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+clearmsgbox() {
+  echo > "$HOME/.cds-msg-box"
+}
+
+monmsgbox() {
+  watch cat "$HOME/.cds-msg-box"
+}
+
+monservices() {
+  watch -c jq -C . "$HOME/.cds-services.json"
+}
+
+sendaction() {
+
+  declare data
+  data="$(date +%s)"
+
+  curl \
+    --silent \
+    --request POST \
+    --url 'localhost:4001/rest/emitter/greet' \
+    --data '{"greeting":"'"${data}"'"}'
+}
+
+if [[ -z $1 ]]; then
+  declare -F | sed 's/^declare -f //'
+else
+  "$1"
+fi
