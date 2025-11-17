@@ -4,7 +4,6 @@
   "description": "Receiver",
   "dependencies": {
     "@qmacro/emitter": "*",
-    "@sap-cloud-sdk/http-client": "^4.1.2",
     "@sap/cds": "^9",
     "express": "^4"
   },
