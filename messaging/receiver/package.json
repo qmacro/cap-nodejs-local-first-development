@@ -2,7 +2,6 @@
   "name": "@qmacro/receiver",
   "version": "1.0.0",
   "description": "Receiver",
-  "private": true,
   "dependencies": {
     "@qmacro/emitter": "*",
     "@sap-cloud-sdk/http-client": "^4.1.2",
