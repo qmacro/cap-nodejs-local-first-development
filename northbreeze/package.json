@@ -1,0 +1,27 @@
+{
+  "name": "northbreeze",
+  "version": "1.0.0",
+  "description": "Mini Northwind",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4",
+    "@sap/cds": "^9"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "url": ":memory:"
+        }
+      }
+    }
+  }
+}
