@@ -1,19 +1,15 @@
 # Flow
 
 ```bash
-# Show project and Products service with two projections (srv/main.cds)
-cds watch # start server and browser entitysets
-# Show auth strategy kind (mocked) in server output
-cds env requires.auth.users # show users for mocked auth strategy
-# annotate service with @requires: 'authenticated-user'
-curl -i -s localhost:4004/odata/v4/products/BasicProducts # fail with 401
-curl -u alice: -i -s localhost:4004/odata/v4/products/BasicProducts # succeed with alice
-curl -u alice: -i -s localhost:4004/odata/v4/products/ProductValues # also succeed
-# annotate ProductValues entity with @restrict: [{to: 'finance'}]
-curl -u alice: -i -s localhost:4004/odata/v4/products/ProductValues # now fail with 403
-# add new user 'polly' with 'finance' role
-curl -u polly: -i -s localhost:4004/odata/v4/products/ProductValues # succeed with polly
-
-
-
-
+cds watch # run server, observe "connect to db > sqlite { url: ':memory:' } and "successfully deployed ..."
+# http://localhost:4004 - the entitysets are empty
+cds add data # create initial data CSV files, header only
+# note new "init from db/data/northwind-XXX.csv" log records
+# show contents of CSV files - just the headers, so entitysets are still empty
+cds add data --records 3 --force # add actual (generated) data
+# http://localhost:4004 - the entitysets now have data which is also somewhat related e.g. http://localhost:4004/northbreeze/Suppliers?$expand=Products
+cp .csv/* db/data/ # replace CSV data with real northbreeze data
+cds repl --run . # start REPL to run some CQL
+await SELECT .from `Products[UnitsInStock = 0] { ProductName as name, Supplier.CompanyName as supplier }` # CQL with infix filter and path expression - SQLite is not a toy
+http://localhost:4004/northbreeze/Products?$filter=UnitsInStock%20eq%200&$select=ProductName&$expand=Supplier($select=CompanyName) # equivalent rest/odata query
+```
