@@ -1,3 +1,5 @@
+# Flow
+
 ```bash
 watch tree -I node_modules # (w1) show starting point - just a package.json
 cds watch # (w2) start empty CAP server
@@ -17,8 +19,4 @@ cds watch # (w2) restart CAP server - note no (in-process) mocking
 # Note "No service definitions" in CAP server
 cp .srv/* srv/ # add a service definition & implementation with projection
 # Request Products entityset and note remote call made from 4004 to 5005
-
-
-
-
-
+```
