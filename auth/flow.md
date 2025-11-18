@@ -13,7 +13,4 @@ curl -u alice: -i -s localhost:4004/odata/v4/products/ProductValues # also succe
 curl -u alice: -i -s localhost:4004/odata/v4/products/ProductValues # now fail with 403
 # add new user 'polly' with 'finance' role
 curl -u polly: -i -s localhost:4004/odata/v4/products/ProductValues # succeed with polly
-
-
-
-
+```
