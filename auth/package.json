@@ -1,0 +1,30 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "description": "To demonstrate mock auth",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4",
+    "@sap/cds": "^9"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "auth": {
+        "users": {
+          "polly": {
+            "roles": [
+              "finance"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
