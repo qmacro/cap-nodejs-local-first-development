@@ -1,6 +1,6 @@
 using northwind from '../db/schema';
 
-@path: '/northbreeze'
+@rest  @path: '/northbreeze'
 service northbreeze {
 
   entity Products   as projection on northwind.Products;
