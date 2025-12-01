@@ -6,6 +6,6 @@ cds.once('served', async () => {
   log(`Setting up listener for ${eventID}`)
   const EmitterService = await cds.connect.to('EmitterService')
   EmitterService.on(eventID, (msg) => {
-    log('-> received:', msg.event, msg.data)
+    log('received:', msg.event, msg.data)
   })
 })
