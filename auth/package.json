@@ -13,18 +13,5 @@
   },
   "scripts": {
     "start": "cds-serve"
-  },
-  "cds": {
-    "requires": {
-      "auth": {
-        "users": {
-          "polly": {
-            "roles": [
-              "finance"
-            ]
-          }
-        }
-      }
-    }
   }
 }
