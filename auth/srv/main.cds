@@ -1,6 +1,6 @@
 using northwind from '../db/schema';
 
-@requires: 'authenticated-user'
+// @requires: 'authenticated-user'
 service Products {
 
   entity BasicProducts as
@@ -10,7 +10,7 @@ service Products {
       Supplier.CompanyName as supplier
     }
 
-  @restrict: [{to: 'finance'}]
+  // @restrict: [{to: 'finance'}]
   entity ProductValues as
     projection on northwind.Products {
       ProductID,
