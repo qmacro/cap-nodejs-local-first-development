@@ -1,6 +1,7 @@
 # Flow
 
 ```bash
+rm ~/.cds-services.json # clean up any stale service provision info
 watch tree -I node_modules # (w1) show starting point - just a package.json
 cds watch # (w2) start empty CAP server
 # Show publicly available Northbreeze service, incl metadata
