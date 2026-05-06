@@ -11,12 +11,16 @@ getapidef() {
 }
 
 getproductsdata() {
+  local tempfile
+  tempfile="$(mktemp)"
+
   mkdir -p db/data/ \
     && curl \
       --silent \
       --url "$NORTHBREEZE/Products" \
     | jq .value \
-      > "db/data/northbreeze.Products.json"
+      > "$tempfile" \
+    && mv "$tempfile" "db/data/northbreeze.Products.json"
 }
 
 main() {
