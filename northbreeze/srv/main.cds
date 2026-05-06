@@ -1,7 +1,7 @@
 using northwind from '../db/schema';
 
 @path: '/northbreeze'
-service northbreeze {
+service localbreeze {
 
   entity Products   as projection on northwind.Products;
   entity Suppliers  as projection on northwind.Suppliers;
