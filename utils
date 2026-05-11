@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+figlol() {
+
+  local text=$1
+  figlet -w "$(tput cols)" -c "$text" | lolcat
+
+}
+
+presetup() {
+
+  tmux set-option -g automatic-rename off
+
+}
+
+showtitle() {
+
+  local main=$1
+  local sub=$2
+
+  clear
+  figlol "$main"
+  figlol "$sub"
+
+  read -r
+
+}
+
+splash() {
+
+  showtitle "$(basename "$PWD")"
+
+}
