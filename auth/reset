@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+main() {
+
+  git restore srv/main.cds
+  rm .cdsrc.json
+
+}
+
+main "$@"
