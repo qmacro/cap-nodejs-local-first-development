@@ -1,22 +1,21 @@
 using northwind from '../db/schema';
 
-// @requires: 'authenticated-user'
-service Products {
+//@requires: 'authenticated-user'
+service Main {
 
-  entity BasicProducts as
-    projection on northwind.Products {
-      ProductID            as ID,
-      ProductName          as name,
-      Supplier.CompanyName as supplier
-    }
+  entity Products   as projection on northwind.Products;
 
-  // @restrict: [{to: 'finance'}]
-  entity ProductValues as
-    projection on northwind.Products {
-      ProductID,
-      ProductName,
-      UnitPrice,
-      UnitsInStock,
-      UnitPrice * UnitsInStock as StockValue : Decimal(5, 2)
+  /*
+  @restrict: [
+    {
+      grant: 'WRITE',
+      to   : 'buyer-admin'
+    },
+    {
+      grant: 'READ',
+      to   : 'any'
     }
+  ]
+  */
+  entity Categories as projection on northwind.Categories;
 }
