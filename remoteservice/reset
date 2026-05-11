@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+main() {
+
+  rm -rf db/ srv/
+  git restore package.json
+
+}
+
+main "$@"

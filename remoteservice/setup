@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+source ../utils
+
+setupscreen() {
+
+  presetup
+  #tmux new-window -n MAIN
+
+}
+
+main() {
+
+  setupscreen
+  splash
+
+}
+
+main "$@"
