@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+source ../utils
+
+setupscreen() {
+
+  presetup
+  tmux \
+    new-window -n MAIN \; \
+    split-window -h \; \
+    select-pane -t 1 \; \
+    send-keys tree C-m \; \
+    select-pane -t 2 \; \
+    send-keys top C-m \; \
+    select-window -t 1 \;
+
+}
+
+main() {
+
+  setupscreen
+  splash
+
+}
+
+main "$@"
