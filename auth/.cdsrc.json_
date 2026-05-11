@@ -5,7 +5,8 @@
         "users": {
           "polly": {
             "roles": [
-              "finance"
+              "buyer-admin",
+              "head-office"
             ]
           }
         }
