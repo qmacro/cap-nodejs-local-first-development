@@ -6,7 +6,7 @@ source ../utils
 
 setupscreen() {
 
-  presetup
+  set-tmux
 
   # +---------------------------------+
   # | tree with      | cds watch      |

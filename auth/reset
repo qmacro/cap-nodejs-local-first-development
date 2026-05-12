@@ -11,7 +11,7 @@ performreset() {
 
 main() {
 
-  cd "$(dirname "$0")" || exit
+  set-dir
   performreset
 
 }

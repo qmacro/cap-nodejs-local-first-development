@@ -7,7 +7,13 @@ figlol() {
 
 }
 
-presetup() {
+set-dir() {
+
+  cd "$(dirname "$0")" || exit
+
+}
+
+set-tmux() {
 
   tmux set-option -g automatic-rename off
 
@@ -28,6 +34,6 @@ showtitle() {
 
 splash() {
 
-  showtitle "$(basename "$PWD")"
+  showtitle "mock" "$(basename "$PWD")"
 
 }
