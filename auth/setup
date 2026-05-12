@@ -7,13 +7,28 @@ source ../utils
 setupscreen() {
 
   presetup
+
+  # +---------------------------------+
+  # | tree with      | cds watch      |
+  # | project        |                |
+  # | structure      |                |
+  # +----------------+----------------+
+  # | nvim with      | prompt         |
+  # | srv/main.cds   | for demo       |
+  # |                | commands       |
+  # +---------------------------------+
+
   tmux \
     new-window -n MAIN \; \
-    split-window -h \; \
+    split-window -h -c "#{pane_current_path}" \; \
     select-pane -t 1 \; \
     send-keys tree C-m \; \
-    select-pane -t 2 \; \
-    send-keys top C-m \; \
+    split-window -v -l 50% \; \
+    send-keys "nvim srv/main.cds" C-m \; \
+    select-pane -t 3 \; \
+    send-keys "cds watch" C-m \; \
+    split-window -v -l 50% \; \
+    select-pane -t 4 \; \
     select-window -t 1 \;
 
 }
