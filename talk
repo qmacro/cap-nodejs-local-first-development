@@ -24,8 +24,8 @@ main() {
   [[ ! -d "$demo" ]] && die "dir doesn't exist"
   [[ ! -x "$demo/setup" ]] && die "setup script not available"
 
-  # tmux session name is demo name in uppercase
-  DEMO="${demo^^}"
+  # tmux session name is demo name in uppercase prefixed with "MOCK-"
+  DEMO="MOCK-${demo^^}"
 
   # if we're already in a tmux session then switch otherwise attach
   attachorswitch=switch-client
