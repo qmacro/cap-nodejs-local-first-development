@@ -1,11 +1,11 @@
 using northwind from '../db/schema';
 
-//@requires: 'authenticated-user'
+@path: '/main'
 service Main {
 
+  @requires: 'authenticated-user'
   entity Products   as projection on northwind.Products;
 
-  /*
   @restrict: [
     {
       grant: 'WRITE',
@@ -16,6 +16,6 @@ service Main {
       to   : 'any'
     }
   ]
-  */
   entity Categories as projection on northwind.Categories;
+
 }
