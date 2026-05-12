@@ -6,13 +6,36 @@ source ../utils
 
 setupscreen() {
 
-  presetup
-  #tmux new-window -n MAIN
+  set-tmux
+
+  # +---------------------------------+
+  # | tree with      | cds watch      |
+  # | project        |                |
+  # | structure      |                |
+  # +----------------+----------------+
+  # | nvim with      | prompt         |
+  # | srv/main.cds   | for demo       |
+  # |                | commands       |
+  # +---------------------------------+
+
+  tmux \
+    new-window -n MAIN \; \
+    split-window -h -c "#{pane_current_path}" \; \
+    select-pane -t 1 \; \
+    send-keys "watch -c tree -C -F -I node_modules" C-m \; \
+    split-window -v -l 50% \; \
+    send-keys "cds watch" C-m \; \
+    select-pane -t 3 \; \
+    new-window -n LOCALBREEZE \; \
+    send-keys "cd ../northbreeze/ && cds watch" C-m \; \
+    select-window -t 1 \;
 
 }
 
 main() {
 
+  set-dir
+  set-tmux
   setupscreen
   splash
 

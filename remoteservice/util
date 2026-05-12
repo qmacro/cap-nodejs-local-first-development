@@ -1,33 +1,47 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
 #declare NORTHBREEZE="https://odd.cfapps.eu10.hana.ondemand.com/northbreeze"
 #declare NORTHBREEZE="https://developer-challenge.cfapps.eu10.hana.ondemand.com/odata/v4/northbreeze"
 declare NORTHBREEZE="http://localhost:4006/northbreeze"
 
 getapidef() {
+
+  local tempfile
+  tempfile="$(mktemp)"
+
   curl \
+    --fail \
     --silent \
     --url "$NORTHBREEZE/\$metadata" \
-    > northbreeze.edmx
+    > "$tempfile"
+  mv "$tempfile" northbreeze.edmx
+
 }
 
 getproductsdata() {
+
   local tempfile
   tempfile="$(mktemp)"
 
   mkdir -p db/data/ \
     && curl \
+      --fail \
       --silent \
       --url "$NORTHBREEZE/Products" \
     | jq .value \
       > "$tempfile" \
     && mv "$tempfile" "db/data/northbreeze.Products.json"
+
 }
 
 main() {
 
   local util=$1
+  set +e
   shift
+  set -e
   if [[ -z $util ]]; then
     declare -F | sed 's/^declare -f //' | grep -v main
   else

@@ -2,10 +2,21 @@
 
 set -o pipefail
 
+source '../utils'
+
+performreset() {
+
+  rm -f ~/.cds-services.json
+  rm -f northbreeze.edmx
+  rm -rf db/ srv/
+  git restore .srv/ package.json
+
+}
+
 main() {
 
-  rm -rf db/ srv/
-  git restore package.json
+  set-dir
+  performreset
 
 }
 
