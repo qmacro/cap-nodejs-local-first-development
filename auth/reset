@@ -2,10 +2,17 @@
 
 set -o pipefail
 
-main() {
+performreset() {
 
   git restore srv/main.cds
-  rm .cdsrc.json
+  rm -f .cdsrc.json
+
+}
+
+main() {
+
+  cd "$(dirname "$0")" || exit
+  performreset
 
 }
 
