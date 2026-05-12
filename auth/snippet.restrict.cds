@@ -1,7 +1,7 @@
 @restrict: [
   {
     grant: 'WRITE',
-    to   : 'buyer-admin'
+    to   : 'buyer'
   },
   {
     grant: 'READ',

@@ -6,7 +6,7 @@
           "alice": {
             "roles": [
               "admin",
-              "buyer-admin",
+              "buyer",
               "head-office"
             ]
           }
