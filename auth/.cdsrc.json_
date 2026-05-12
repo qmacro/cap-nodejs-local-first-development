@@ -3,8 +3,9 @@
     "requires": {
       "auth": {
         "users": {
-          "polly": {
+          "alice": {
             "roles": [
+              "admin",
               "buyer-admin",
               "head-office"
             ]
