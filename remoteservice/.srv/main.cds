@@ -1,5 +1,5 @@
 using {northbreeze} from './external/northbreeze';
 
-service Local {
+service Main {
   entity Products as projection on northbreeze.Products;
 }
