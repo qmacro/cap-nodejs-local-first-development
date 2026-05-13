@@ -7,10 +7,15 @@ source "$HERE/../utils"
 
 performreset() {
 
-  rm -f ~/.cds-services.json
-  rm -f northbreeze.edmx
-  rm -rf db/ srv/
-  git restore .srv/ package.json
+  rm -rf \
+    ~/.cds-services.json \
+    northbreeze.edmx \
+    package-lock.json \
+    node_modules/ \
+    db/ srv/
+  git restore \
+    .srv/ \
+    package.json
 
 }
 
