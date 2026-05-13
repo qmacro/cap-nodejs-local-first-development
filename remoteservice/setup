@@ -2,7 +2,8 @@
 
 set -o pipefail
 
-source ../utils
+HERE="$(dirname "$0")"
+source "$HERE/../utils"
 
 setupscreen() {
 
@@ -34,7 +35,7 @@ setupscreen() {
 
 main() {
 
-  set-dir
+  cd "$HERE" || die "Cannot change dir to '$HERE'"
   set-tmux
   setupscreen
   splash

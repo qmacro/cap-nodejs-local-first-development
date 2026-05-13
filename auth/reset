@@ -2,6 +2,9 @@
 
 set -o pipefail
 
+HERE="$(dirname "$0")"
+source "$HERE/../utils"
+
 performreset() {
 
   git restore srv/main.cds
@@ -11,7 +14,7 @@ performreset() {
 
 main() {
 
-  set-dir
+  cd "$HERE" || die "Cannot change dir to '$HERE'"
   performreset
 
 }

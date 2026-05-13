@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
+die() {
+
+  >&2 echo "$@"
+  exit 1
+
+}
+
 figlol() {
 
   local text=$1
   figlet -w "$(tput cols)" -c "$text" | lolcat
-
-}
-
-set-dir() {
-
-  cd "$(dirname "$0")" || exit
 
 }
 
