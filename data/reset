@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+HERE="$(dirname "$0")"
+source "$HERE/../utils"
+
+performreset() {
+
+  rm -rf \
+    db/data/
+
+}
+
+main() {
+
+  cd "$HERE" || die "Cannot change dir to '$HERE'"
+  performreset
+
+}
+
+main "$@"

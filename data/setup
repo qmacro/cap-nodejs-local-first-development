@@ -9,14 +9,14 @@ setupscreen() {
 
   set-tmux
 
-  # +-MAIN-(auth)---------------------+
-  # | tree with     1| cds watch     3|
-  # | project        |                |
-  # | structure      |                |
+  # +-MAIN-(data)---------------------+
+  # | lf            1| cds watch     3|
+  # | to show        |                |
+  # | proj files     |                |
   # +----------------+----------------+
-  # | nvim with     2| prompt        4|
-  # | srv/main.cds   | for demo       |
-  # |                | commands       |
+  # | nvim          2| prompt        4|
+  # | showing        | for demo       |
+  # | srv/main.cds   | commands       |
   # +---------------------------------+
 
   tmux \
@@ -28,7 +28,7 @@ setupscreen() {
     split-window -v -l 50% \;
 
   tmux \
-    select-pane -t 1 \; send-keys tree C-m \; \
+    select-pane -t 1 \; send-keys "watch -c tree -C -F -I setup -I reset" C-m \; \
     select-pane -t 2 \; send-keys "nvim srv/main.cds" C-m \; \
     select-pane -t 3 \; send-keys "cds watch" C-m \; \
     select-pane -t 4 \;

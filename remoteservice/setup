@@ -9,26 +9,32 @@ setupscreen() {
 
   set-tmux
 
-  # +---------------------------------+
-  # | tree with      | cds watch      |
-  # | project        |                |
-  # | structure      |                |
-  # +----------------+----------------+
-  # | nvim with      | prompt         |
-  # | srv/main.cds   | for demo       |
-  # |                | commands       |
-  # +---------------------------------+
+  # +-MAIN-(remoteservice)------------+ +-LOCALBREEZE---------------------+
+  # | tree with     1| prompt        3| | cds ../northbreeze/ \          1|
+  # | project        | for demo       | |   && cds watch                  |
+  # | structure      | commands       | |                                 |
+  # +----------------+                | |                                 |
+  # | cds watch     2|                | |                                 |
+  # |                |                | |                                 |
+  # |                |                | |                                 |
+  # +---------------------------------+ +---------------------------------+
 
   tmux \
     new-window -n MAIN \; \
     split-window -h -c "#{pane_current_path}" \; \
     select-pane -t 1 \; \
-    send-keys "watch -c tree -C -F -I node_modules" C-m \; \
-    split-window -v -l 50% \; \
-    send-keys "cds watch" C-m \; \
-    select-pane -t 3 \; \
+    split-window -v -l 50% \;
+
+  tmux \
+    select-pane -t 1 \; send-keys "watch -c tree -C -F -I setup -I reset -I util -I node_modules" C-m \; \
+    select-pane -t 2 \; send-keys "cds watch" C-m \; \
+    select-pane -t 3 \;
+
+  tmux \
     new-window -n LOCALBREEZE \; \
-    send-keys "cd ../northbreeze/ && cds watch" C-m \; \
+    send-keys "cd ../northbreeze/ && cds watch" C-m \;
+
+  tmux \
     select-window -t 1 \;
 
 }
@@ -36,6 +42,7 @@ setupscreen() {
 main() {
 
   cd "$HERE" || die "Cannot change dir to '$HERE'"
+  ./reset
   set-tmux
   setupscreen
   splash
