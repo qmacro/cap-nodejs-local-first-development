@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+HERE="$(dirname "$0")"
+source "$HERE/../utils"
+
+setupscreen() {
+
+  set-tmux
+
+  # +-MAIN-(messaging)----------------+
+  # | TBD           1| TBD           3|
+  # |                |                |
+  # |                |                |
+  # +----------------+----------------+
+  # | TBD           2| TBD           4|
+  # |                |                |
+  # |                |                |
+  # +---------------------------------+
+
+  tmux \
+    new-window -n MAIN \; \
+    split-window -h -c "#{pane_current_path}" \; \
+    select-pane -t 1 \; \
+    split-window -v -l 50% \; \
+    select-pane -t 3 \; \
+    split-window -v -l 50% \;
+
+  tmux \
+    select-pane -t 1 \;
+  #    select-pane -t 1 \; send-keys "watch -c tree -C -F -I setup -I reset" C-m \; \
+  #    select-pane -t 2 \; send-keys "nvim srv/main.cds" C-m \; \
+  #    select-pane -t 3 \; send-keys "cds watch" C-m \; \
+  #    select-pane -t 4 \;
+
+  tmux \
+    select-window -t 1 \;
+
+}
+
+main() {
+
+  cd "$HERE" || die "Cannot change dir to '$HERE'"
+  ./reset
+  set-tmux
+  setupscreen
+  splash
+
+}
+
+main "$@"
