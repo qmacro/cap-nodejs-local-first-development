@@ -18,11 +18,10 @@ monservices() {
 
 sendaction() {
 
-  local port="${1:-4001}"
+  local port="${1:-4006}"
   data="$(date +%s)" # random data
 
   curl \
-    --silent \
     --request POST \
     --url "localhost:$port/rest/emitter/greet" \
     --data '{"greeting":"'"${data}"'"}'

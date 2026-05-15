@@ -3,18 +3,22 @@
   "version": "1.0.0",
   "description": "Emitter",
   "dependencies": {
-    "@sap/cds": "^9",
-    "express": "^4"
-  },
-  "devDependencies": {
-    "@cap-js/sqlite": "^2"
+    "@sap/cds": "^9"
   },
   "scripts": {
     "start": "cds-serve"
   },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
   "cds": {
     "requires": {
-      "messaging": true
+      "db": {
+        "driver": "node"
+      },
+      "messaging": {
+        "kind": "file-based-messaging"
+      }
     }
   }
 }
