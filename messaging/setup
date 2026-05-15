@@ -9,18 +9,28 @@ setupscreen() {
 
   set-tmux
 
-  # +-MAIN-(messaging)----------------+
-  # | TBD           1| TBD           3|
-  # |                |                |
+  # +-EMITTER-RECEIVER (messaging)----+
+  # | emitter       1| emitter       3|
+  # | main.cds       | package.json   |
   # |                |                |
   # +----------------+----------------+
-  # | TBD           2| TBD           4|
+  # | emitter       2| receiver       |
+  # | main.js        | server.js      |
+  # |                |                |
+  # +---------------------------------+
+  #
+  # +-RECEIVER (messaging)------------+
+  # | main.cds      1| package.json  3|
+  # |                |                |
+  # |                |                |
+  # +----------------+                |
+  # | main.js       2|                |
   # |                |                |
   # |                |                |
   # +---------------------------------+
 
   tmux \
-    new-window -n MAIN \; \
+    new-window -n DESIGN \; \
     split-window -h -c "#{pane_current_path}" \; \
     select-pane -t 1 \; \
     split-window -v -l 50% \; \
@@ -28,14 +38,30 @@ setupscreen() {
     split-window -v -l 50% \;
 
   tmux \
-    select-pane -t 1 \;
-  #    select-pane -t 1 \; send-keys "watch -c tree -C -F -I setup -I reset" C-m \; \
-  #    select-pane -t 2 \; send-keys "nvim srv/main.cds" C-m \; \
-  #    select-pane -t 3 \; send-keys "cds watch" C-m \; \
-  #    select-pane -t 4 \;
+    select-window -t DESIGN \; \
+    select-pane -t 1 \; send-keys "vi -R emitter/srv/main.cds" C-m \; \
+    select-pane -t 2 \; send-keys "vi -R emitter/srv/main.js" C-m \; \
+    select-pane -t 3 \; send-keys "vi -R emitter/package.json" C-m \; \
+    select-pane -t 4 \; send-keys "vi -R receiver/server.js" C-m \;
 
   tmux \
-    select-window -t 1 \;
+    new-window -n RUN \; \
+    split-window -h -c "#{pane_current_path}" \; \
+    select-pane -t 1 \; \
+    split-window -v -l 50% \; \
+    select-pane -t 3 \; \
+    split-window -v -l 50% \;
+
+  tmux \
+    select-window -t RUN \; \
+    select-pane -t 1 \; send-keys "DEBUG=queue cds watch emitter" C-m \; \
+    select-pane -t 2 \; send-keys "watch -n 1 cat ~/.cds-msg-box" C-m \; \
+    select-pane -t 3 \; send-keys "# ready for receiver ..." C-m \; \
+    select-pane -t 3 \; send-keys "DEBUG=queue cds watch receiver" \; \
+    select-pane -t 4 \; send-keys "watch -c jq -C . ~/.cds-services.json" C-m \;
+
+  tmux \
+    select-window -t 1\;
 
 }
 
@@ -43,6 +69,7 @@ main() {
 
   cd "$HERE" || die "Cannot change dir to '$HERE'"
   ./reset
+  #npm install
   set-tmux
   setupscreen
   splash

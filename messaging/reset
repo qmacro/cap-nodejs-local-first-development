@@ -7,7 +7,12 @@ source "$HERE/../utils"
 
 performreset() {
 
-  :
+  rm -rf \
+    node_modules/ \
+    package-lock.json
+
+  echo > ~/.cds-msg-box
+  echo > ~/.cds-services.json
 
 }
 
