@@ -9,7 +9,7 @@ setupscreen() {
 
   set-tmux
 
-  # +-EMITTER-RECEIVER (messaging)----+
+  # +-DESIGN-(messaging)--------------+
   # | emitter       1| emitter       3|
   # | main.cds       | package.json   |
   # |                |                |
@@ -19,13 +19,13 @@ setupscreen() {
   # |                |                |
   # +---------------------------------+
   #
-  # +-RECEIVER (messaging)------------+
-  # | main.cds      1| package.json  3|
-  # |                |                |
-  # |                |                |
-  # +----------------+                |
-  # | main.js       2|                |
-  # |                |                |
+  # +-RUN-(messaging)-----------------+
+  # | cds watch     1| ready for     3|
+  # | emitter        | cds watch      |
+  # |                | receiver       |
+  # +----------------+----------------+
+  # | show          2| show          4|
+  # | cds-msg-box    | cds-services   |
   # |                |                |
   # +---------------------------------+
 
@@ -61,7 +61,10 @@ setupscreen() {
     select-pane -t 4 \; send-keys "watch -c jq -C . ~/.cds-services.json" C-m \;
 
   tmux \
-    select-window -t 1\;
+    new-window -d -n NPM-INSTALL "npm install" \;
+
+  tmux \
+    select-window -t 1 \;
 
 }
 
