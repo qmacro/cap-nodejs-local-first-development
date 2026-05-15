@@ -1,6 +1,6 @@
 namespace org.qmacro.emitter;
 
-@rest  @hcql
+@rest
 service EmitterService {
   action greet(greeting: String) returns String;
 
