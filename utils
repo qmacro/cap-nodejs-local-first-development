@@ -10,7 +10,8 @@ die() {
 figlol() {
 
   local text=$1
-  figlet -w "$(tput cols)" -c "$text" | lolcat
+  figlet -w "$(tput cols)" -c "$text" \
+    | /usr/games/lolcat
 
 }
 
