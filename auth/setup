@@ -28,7 +28,7 @@ setupscreen() {
     split-window -v -l 50% \;
 
   tmux \
-    select-pane -t 1 \; send-keys tree C-m \; \
+    select-pane -t 1 \; send-keys "clear; tree -I setup -I reset -I 'snippet*'" C-m \; \
     select-pane -t 2 \; send-keys "nvim srv/main.cds" C-m \; \
     select-pane -t 3 \; send-keys "cds watch" C-m \; \
     select-pane -t 4 \;
