@@ -13,9 +13,6 @@
   },
   "cds": {
     "requires": {
-      "db": {
-        "driver": "node"
-      },
       "EmitterService": {
         "service": "org.qmacro.emitter.EmitterService",
         "model": "@qmacro/emitter"

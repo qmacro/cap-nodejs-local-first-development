@@ -13,9 +13,6 @@
   },
   "cds": {
     "requires": {
-      "db": {
-        "driver": "node"
-      },
       "messaging": {
         "kind": "file-based-messaging"
       }
