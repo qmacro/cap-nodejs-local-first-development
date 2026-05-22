@@ -27,7 +27,7 @@ setupscreen() {
 
   tmux \
     select-pane -t 1 \; send-keys "watch -c tree -C -F -I setup -I reset -I util -I node_modules" C-m \; \
-    select-pane -t 2 \; send-keys "cds watch" C-m \; \
+    select-pane -t 2 \; send-keys "cds watch" \; \
     select-pane -t 3 \;
 
   tmux \
