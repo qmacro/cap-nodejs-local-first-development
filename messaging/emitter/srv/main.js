@@ -3,9 +3,8 @@ const log = cds.log('emitter')
 
 module.exports = cds.service.impl(async function() {
   this.on('greet', async (req) => {
-    const emitter = await cds.connect.to('org.qmacro.emitter.EmitterService')
     log(`emitting Greeting.Received (${req.data.greeting})`)
-    await emitter.emit('Greeting.Received', { info: req.data.greeting })
+    await this.emit('Greeting.Received', { info: req.data.greeting })
     return 'OK'
   })
 })
