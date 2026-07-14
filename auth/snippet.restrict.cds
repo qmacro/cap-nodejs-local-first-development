@@ -1,10 +1,4 @@
-@restrict: [
-  {
-    grant: 'WRITE',
-    to   : 'buyer'
-  },
-  {
-    grant: 'READ',
-    to   : 'any'
-  }
-]
+@restrict: [{
+  grant: 'WRITE',
+  to   : 'buyer'
+}]
