@@ -12,7 +12,7 @@
   "cds": {
     "requires": {
       "EmitterService": {
-        "service": "org.qmacro.emitter.EmitterService",
+        "service": "qmacro.emitter.EmitterService",
         "model": "@qmacro/emitter"
       },
       "messaging": {

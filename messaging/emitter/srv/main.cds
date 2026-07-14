@@ -1,4 +1,4 @@
-namespace org.qmacro.emitter;
+namespace qmacro.emitter;
 
 @rest
 service EmitterService {
