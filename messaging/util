@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+declare PORT=4006
+
 clearmsgbox() {
   echo > "$HOME/.cds-msg-box"
 }
@@ -18,8 +20,8 @@ monservices() {
 
 sendaction() {
 
-  local port="${1:-4006}"
-  data="$(date +%s)" # random data
+  local port="$PORT"
+  data="${1:-$(date +%s)}" # fallback to timestamp
 
   curl \
     --request POST \
