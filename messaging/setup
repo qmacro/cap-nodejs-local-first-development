@@ -41,7 +41,7 @@ setupscreen() {
     select-window -t DESIGN \; \
     select-pane -t 1 \; send-keys "vi -R emitter/srv/main.cds" C-m \; \
     select-pane -t 2 \; send-keys "vi -R emitter/srv/main.js" C-m \; \
-    select-pane -t 3 \; send-keys "vi -R emitter/package.json" C-m \; \
+    select-pane -t 3 \; send-keys "vi -R receiver/package.json" C-m \; \
     select-pane -t 4 \; send-keys "vi -R receiver/server.js" C-m \;
 
   tmux \
@@ -59,8 +59,8 @@ setupscreen() {
     select-pane -t 3 \; send-keys "DEBUG=queue cds watch receiver" \; \
     select-pane -t 4 \; send-keys "watch -c jq -C . ~/.cds-services.json" C-m \;
 
-  tmux \
-    new-window -d -n NPM-INSTALL "npm install" \;
+  # tmux \
+  #   new-window -d -n NPM-INSTALL "npm_config_ignore_scripts=false npm install" \;
 
   tmux \
     select-window -t 1 \;
@@ -71,8 +71,6 @@ main() {
 
   cd "$HERE" || die "Cannot change dir to '$HERE'"
   ./reset
-  #npm install
-  set-tmux
   setupscreen
   splash
 
