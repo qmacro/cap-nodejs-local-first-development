@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "description": "Receiver",
   "dependencies": {
+    "@sap/cds": "^10",
     "@qmacro/emitter": "*"
   },
   "scripts": {
     "start": "cds-serve"
-  },
-  "devDependencies": {
-    "@cap-js/sqlite": "^2"
   },
   "cds": {
     "requires": {
