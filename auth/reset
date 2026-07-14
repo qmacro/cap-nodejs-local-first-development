@@ -8,7 +8,7 @@ source "$HERE/../utils"
 performreset() {
 
   git restore srv/main.cds
-  rm -f .cdsrc.json
+  rm -f .cdsrc.{json,yaml}
 
 }
 
