@@ -15,9 +15,7 @@
         "service": "qmacro.emitter.EmitterService",
         "model": "@qmacro/emitter"
       },
-      "messaging": {
-        "kind": "file-based-messaging"
-      }
+      "messaging": true
     }
   }
 }

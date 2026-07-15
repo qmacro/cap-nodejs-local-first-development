@@ -13,9 +13,7 @@
   },
   "cds": {
     "requires": {
-      "messaging": {
-        "kind": "file-based-messaging"
-      }
+      "messaging": true
     }
   }
 }
