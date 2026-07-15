@@ -54,9 +54,9 @@ setupscreen() {
 
   tmux \
     select-window -t RUN \; \
-    select-pane -t 1 \; send-keys "DEBUG=queue cds watch emitter" \; \
+    select-pane -t 1 \; send-keys "DEBUG=messaging cds watch emitter" \; \
     select-pane -t 2 \; send-keys "watch -n 1 cat ~/.cds-msg-box" C-m \; \
-    select-pane -t 3 \; send-keys "DEBUG=queue cds watch receiver" \; \
+    select-pane -t 3 \; send-keys "DEBUG=messaging cds watch receiver" \; \
     select-pane -t 4 \; send-keys "watch -c jq -C . ~/.cds-services.json" C-m \;
 
   # tmux \
