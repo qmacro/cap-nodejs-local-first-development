@@ -25,6 +25,7 @@ sendaction() {
 
   curl \
     --request POST \
+    --header 'Content-Type: application/json' \
     --url "localhost:$port/rest/emitter/greet" \
     --data '{"greeting":"'"${data}"'"}'
 }
