@@ -32,9 +32,9 @@ setupscreen() {
     select-pane -t 2 \; send-keys "cds watch" \; \
     select-pane -t 3 \;
 
-  tmux \
-    new-window -n LOCALBREEZE \; \
-    send-keys "cd ../northbreeze/ && cds watch" C-m \;
+  # tmux \
+  #   new-window -n LOCALBREEZE \; \
+  #   send-keys "cd ../northbreeze/ && cds watch" C-m \;
 
   tmux \
     select-window -t 1 \;
