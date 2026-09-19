@@ -3,8 +3,6 @@
 set -eo pipefail
 
 declare NORTHBREEZE="https://odd.cfapps.eu10.hana.ondemand.com/northbreeze"
-#declare NORTHBREEZE="https://developer-challenge.cfapps.eu10.hana.ondemand.com/odata/v4/northbreeze"
-#declare NORTHBREEZE="http://localhost:4009/northbreeze"
 
 getapidef() {
 
